@@ -15,6 +15,7 @@ body {
   color: #1f2937;
   background: #ffffff;
   line-height: 1.6;
+  padding-top: 100px;
 }
 
 .container {
@@ -27,8 +28,19 @@ body {
    HEADER
 ===================== */
 .header {
-  background: #0f172a;
+  background: #5b4d42;
+  position: sticky;   /* BIAR NEMPEL */
+  top: 0;             /* NEMPEL DI ATAS */
+  z-index: 1000;      /* BIAR DI ATAS SEMUA */
 }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 
 .header .container {
   display: flex;
@@ -44,24 +56,63 @@ body {
 }
 
 .logo-img {
-  width: 90px; /* FIX TYPO */
+  width: 90px; 
   height: 90px;
   object-fit: contain;
 }
 
 .logo-text {
   color: #f97316;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* ===== NAVBAR MENU ===== */
+.nav {
+  display: flex;
+  gap: 28px;
 }
 
 .nav a {
+  position: relative;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
   color: #e5e7eb;
+  padding: 6px 2px;
+  transition: color 0.3s ease;
+}
+
+/* garis bawah animasi */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #f97316; /* orange phoenix */
+  transition: width 0.3s ease;
 }
 
 .nav a:hover {
   color: #f97316;
 }
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* menu aktif */
+.nav a.active {
+  color: #f97316;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+
 
 
 /* =====================
@@ -354,8 +405,8 @@ body {
   }
 
   .logo-img {
-    width: 64px;
-    height: 64px;
+    width: 120px;
+    height: 120px;
   }
 }
 /* =====================
@@ -457,4 +508,13 @@ body {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+/* =====================
+   SERVICES - MOBILE
+===================== */
+@media (max-width: 768px) {
+  .services {
+    grid-template-columns: repeat(2, 1fr); /* HP: 2 kolom */
+    gap: 20px;
+  }
 }
